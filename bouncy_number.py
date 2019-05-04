@@ -1,4 +1,4 @@
-# If incr = True and decr = True, then is a bouncy number. 
+# If incr = True and decr = True, then it is a bouncy number. 
 def is_bouncy(num):
     incr, decr = False, False
     right_digit = num % 10
