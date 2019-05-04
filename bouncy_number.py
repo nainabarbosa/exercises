@@ -1,26 +1,21 @@
-# If incr = True and decr = True, then it is a bouncy number. 
 def is_bouncy(num):
-    incr, decr = False, False
-    right_digit = num % 10
-    num = num // 10
-
-    while num > 0:
-        left_digit = num % 10
-        if left_digit < right_digit:
-            incr = True
-        elif left_digit > right_digit:
-            decr = True
-        right_digit = left_digit
-        num = num // 10
-        if incr and decr:
+    increasing, decreasing = False, False
+    num_str = str(num)
+    for i in range(len(num_str)-1):
+        if num_str[i+1] > num_str[i]:
+            increasing = True
+        elif num_str[i+1] < num_str[i]:
+            decreasing = True
+        if increasing and decreasing: 
             return True
     return False
 
-# Iterate through numbers until the bouncy count is 99%
 count = 0
-i = 99
-while count < 0.99 * i:
-    i = i + 1
-    if is_bouncy(i):
+percentage = 0.0
+n = 99
+while int(percentage) != 99:    
+    n = n + 1
+    if is_bouncy(n):
         count = count + 1
-print(i)
+    percentage = (count*100.0)/n
+print('{0} is the least number for which the proportion of bouncy numbers is exactly 99%.'.format(n))
